@@ -5,5 +5,17 @@ var carDirection = {
   ArrowLeft: 'west',
   ArrowUp: 'north'
 };
+var $car = document.querySelector('.car');
 
-carDirection.currentDirection = 'west';
+function handleDirection(event) {
+  var key = event.key;
+  if (key in carDirection === false) {
+    return;
+  }
+  $car.classList.replace(carDirection.currentDirection, carDirection[key]);
+  carDirection.currentDirection = carDirection[key];
+}
+
+window.addEventListener('keydown', handleDirection);
+
+// Fix all errors
