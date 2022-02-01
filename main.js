@@ -1,6 +1,9 @@
-var car = {
-  directions: ['east', 'south', 'west', 'north'],
-  currentDirection: 'east'
+var carDirection = {
+  currentDirection: 'east',
+  ArrowRight: 'east',
+  ArrowDown: 'south',
+  ArrowLeft: 'west',
+  ArrowUp: 'north'
 };
 
-car.directions = 'west';
+carDirection.currentDirection = 'west';
