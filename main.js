@@ -17,5 +17,3 @@ function handleDirection(event) {
 }
 
 window.addEventListener('keydown', handleDirection);
-
-// Fix all errors
