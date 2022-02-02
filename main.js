@@ -48,5 +48,3 @@ function handleMovement(event) {
 
 window.addEventListener('keydown', handleTurn);
 window.addEventListener('keydown', handleMovement);
-
-// Fix Errors
