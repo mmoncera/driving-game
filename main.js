@@ -14,8 +14,6 @@ function startCar() {
   $car.style.left = carDirection.x + 'px';
 }
 
-setInterval(startCar, 16);
-
 function handleTurn(event) {
   var key = event.key;
   if (key in carDirection === false) {
@@ -25,4 +23,14 @@ function handleTurn(event) {
   carDirection.currentDirection = carDirection[key];
 }
 
+function handleMovement(event) {
+  var key = event.key;
+  if (key === ' ') {
+    setInterval(startCar, 16);
+  }
+}
+
 window.addEventListener('keydown', handleTurn);
+window.addEventListener('keydown', handleMovement);
+
+// Fix errors
