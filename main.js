@@ -1,13 +1,15 @@
+var $car = document.querySelector('.car');
 var carDirection = {
   currentDirection: 'east',
   ArrowRight: 'east',
   ArrowDown: 'south',
   ArrowLeft: 'west',
-  ArrowUp: 'north'
+  ArrowUp: 'north',
+  x: $car.getBoundingClientRect().left,
+  y: $car.getBoundingClientRect().top
 };
-var $car = document.querySelector('.car');
 
-function handleDirection(event) {
+function handleTurn(event) {
   var key = event.key;
   if (key in carDirection === false) {
     return;
@@ -16,4 +18,4 @@ function handleDirection(event) {
   carDirection.currentDirection = carDirection[key];
 }
 
-window.addEventListener('keydown', handleDirection);
+window.addEventListener('keydown', handleTurn);
