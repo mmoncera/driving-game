@@ -59,5 +59,3 @@ function handleStartStop(event) {
 
 window.addEventListener('keydown', handleTurn);
 window.addEventListener('keydown', handleStartStop);
-
-// Fix errors
