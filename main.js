@@ -9,6 +9,13 @@ var carDirection = {
   y: $car.getBoundingClientRect().top
 };
 
+function startCar() {
+  carDirection.x += 10;
+  $car.style.left = carDirection.x + 'px';
+}
+
+setInterval(startCar, 16);
+
 function handleTurn(event) {
   var key = event.key;
   if (key in carDirection === false) {
