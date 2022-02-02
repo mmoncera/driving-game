@@ -13,10 +13,16 @@ var carInfo = {
   },
   isStarted: false
 };
+var intervalId;
 
 function startCar() {
   carInfo.coordinates.x += 10;
   $car.style.left = carInfo.coordinates.x + 'px';
+}
+
+function stopCar() {
+  clearInterval(intervalId);
+  carInfo.isStarted = false;
 }
 
 function handleTurn(event) {
@@ -31,10 +37,16 @@ function handleTurn(event) {
 function handleMovement(event) {
   var key = event.key;
   if (key === ' ') {
-    setInterval(startCar, 16);
-    carInfo.isStarted = true;
+    if (!carInfo.isStarted) {
+      intervalId = setInterval(startCar, 16);
+      carInfo.isStarted = true;
+      return;
+    }
+    stopCar();
   }
 }
 
 window.addEventListener('keydown', handleTurn);
 window.addEventListener('keydown', handleMovement);
+
+// Fix Errors
