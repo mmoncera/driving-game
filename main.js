@@ -16,8 +16,19 @@ var carInfo = {
 var intervalId;
 
 function startCar() {
-  carInfo.coordinates.x += 10;
-  $car.style.left = carInfo.coordinates.x + 'px';
+  if (carInfo.currentDirection === 'east') {
+    carInfo.coordinates.x += 10;
+    $car.style.left = carInfo.coordinates.x + 'px';
+  } else if (carInfo.currentDirection === 'south') {
+    carInfo.coordinates.y += 10;
+    $car.style.top = carInfo.coordinates.y + 'px';
+  } else if (carInfo.currentDirection === 'west') {
+    carInfo.coordinates.x -= 10;
+    $car.style.left = carInfo.coordinates.x + 'px';
+  } else if (carInfo.currentDirection === 'north') {
+    carInfo.coordinates.y -= 10;
+    $car.style.top = carInfo.coordinates.y + 'px';
+  }
 }
 
 function stopCar() {
@@ -27,14 +38,14 @@ function stopCar() {
 
 function handleTurn(event) {
   var key = event.key;
-  if (carInfo.isStarted) {
+  if (key in carInfo.directions === false) {
     return;
   }
   $car.classList.replace(carInfo.currentDirection, carInfo.directions[key]);
   carInfo.currentDirection = carInfo.directions[key];
 }
 
-function handleMovement(event) {
+function handleStartStop(event) {
   var key = event.key;
   if (key === ' ') {
     if (!carInfo.isStarted) {
@@ -47,4 +58,4 @@ function handleMovement(event) {
 }
 
 window.addEventListener('keydown', handleTurn);
-window.addEventListener('keydown', handleMovement);
+window.addEventListener('keydown', handleStartStop);
